@@ -36,7 +36,7 @@ export function Testimonials() {
             Lo que dicen nuestros clientes
           </h2>
           <p className="text-xl md:text-2xl text-white/70 max-w-2xl mx-auto">
-            Testimonios de clientes conformes sobre nuestros trabajos. Te invitamos a nuestro <a href="https://www.tiktok.com/@ag.divisiongastronomia" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">TikTok</a>
+            Testimonios de clientes conformes sobre nuestros trabajos. Te invitamos a nuestro <a href="https://www.tiktok.com/@agdivgastro" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">TikTok</a>
           </p>
         </motion.div>
 
