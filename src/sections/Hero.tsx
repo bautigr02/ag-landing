@@ -40,10 +40,8 @@ export function Hero() {
             className="object-cover object-[center_right]"
           />
         </div>
-        {/* Degradado desde la izquierda (opaco) hacia el centro (transparente) */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 via-50% to-transparent" />
-        {/* Overlay sutil adicional para mejor legibilidad del texto */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white/60 via-white/20 to-transparent lg:from-white/50 lg:via-white/10" />
+        {/* Degradado comprimido: opaco hasta ~40%, luego transparente rápidamente */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/60 via-[40%] to-transparent" />
       </div>
 
       {/* Sticky container */}
