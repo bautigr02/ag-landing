@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Landing de una sola página para **AG División Gastronomía**, metalúrgica especializada en frentes de parrilla a medida, parrillas, parrigas y accesorios, con foco en conversión a WhatsApp y llamadas desde mobile.
 
-## Getting Started
+## Instalación y ejecución
 
-First, run the development server:
+1. Cloná o abrí este proyecto en tu máquina.
+2. En una terminal, parate en la carpeta del proyecto:
+
+```bash
+cd ag-landing
+```
+
+3. Instalá dependencias (solo la primera vez):
+
+```bash
+npm install
+```
+
+4. Levantá el servidor de desarrollo:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Abrí `http://localhost:3000` en tu navegador.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Estructura principal
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `src/app/page.tsx`: página única (landing) con todas las secciones.
+- `src/app/layout.tsx`: layout general, `<head>`, metadata SEO y tipografías.
+- `src/app/globals.css`: estilos globales y tema (gris/negro metal + verde WhatsApp).
+- `src/components/*`: componentes por sección (Hero, Beneficios, Servicios, Proceso, Galería, Testimonios, FAQ, Contacto, Footer, botón flotante de WhatsApp).
+- `public/galeria/*`: imágenes placeholder de trabajos (podés reemplazarlas por fotos reales).
+- `public/og-image.jpg`: imagen placeholder para OpenGraph (compartir en redes).
 
-## Learn More
+## Cómo reemplazar fotos
 
-To learn more about Next.js, take a look at the following resources:
+- Guardá tus fotos en:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```text
+public/galeria/
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Usá estos nombres sugeridos para que la galería funcione sin tocar código:
+  - `trabajo-1.svg` (o `.jpg/.png`)
+  - `trabajo-2.svg`
+  - `trabajo-3.svg`
+  - `trabajo-4.svg`
+  - `trabajo-5.svg`
+  - `trabajo-6.svg`
 
-## Deploy on Vercel
+Si usás JPG/PNG, solo cambiá las extensiones en el componente `Gallery`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Dónde editar textos
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Los textos principales están en:
+
+- `src/components/Hero.tsx`: H1, subtítulo y CTA principal a WhatsApp.
+- `src/components/Benefits.tsx`: listado de beneficios.
+- `src/components/Products.tsx`: cards de productos/servicios.
+- `src/components/Process.tsx`: pasos del proceso.
+- `src/components/Testimonials.tsx`: testimonios placeholder.
+- `src/components/Faq.tsx`: preguntas frecuentes.
+- `src/components/Contact.tsx`: dirección, horarios, zona de cobertura, WhatsApp y botón “Llamar”.
+- `src/components/Footer.tsx`: datos de negocio y año ©.
+
+Los links de WhatsApp ya están configurados con el número:
+
+```text
++54 9 3329 473469
+```
+
+Si cambiás el número, buscá `wa.me/5493329473469` en el código y actualizalo.
+
+## Navegación y anchors
+
+La navegación usa anchors para moverse dentro de la misma página:
+
+- `#servicios`
+- `#proceso`
+- `#trabajos`
+- `#faq`
+- `#contacto`
+
+Podés ajustar los IDs directamente en cada `<section>` si querés cambiar los nombres.
+
+## Botón flotante de WhatsApp
+
+El botón flotante de WhatsApp:
+
+- Está implementado en `src/components/FloatingWhatsApp.tsx`.
+- Se muestra solo en mobile (`md:hidden`).
+- Abre una conversación directa con un mensaje prellenado.
+
+Si querés cambiar el texto inicial del mensaje, editá la constante del `encodeURIComponent` en ese componente.
