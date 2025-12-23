@@ -38,8 +38,8 @@ export function Hero() {
           priority
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-white/50 via-white/30 to-white/20" />
-        <div className="absolute inset-0 bg-white/15 lg:bg-white/25" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-transparent" />
+        <div className="absolute inset-0 bg-white/5 lg:bg-white/10" />
       </div>
 
       {/* Sticky container */}
