@@ -18,7 +18,9 @@ export function Hero() {
 
   useEffect(() => {
     // Inicializar tema light para el hero
-    document.documentElement.setAttribute("data-section-theme", "light");
+    if (typeof document !== "undefined") {
+      document.documentElement.setAttribute("data-section-theme", "light");
+    }
   }, []);
 
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
@@ -36,8 +38,8 @@ export function Hero() {
           priority
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/70" />
-        <div className="absolute inset-0 bg-white/40 lg:bg-white/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white/50 via-white/30 to-white/20" />
+        <div className="absolute inset-0 bg-white/15 lg:bg-white/25" />
       </div>
 
       {/* Sticky container */}

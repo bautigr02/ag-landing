@@ -26,12 +26,17 @@ export function SectionWrapper({
   const [isInView, setIsInView] = useState(false);
 
   useEffect(() => {
+    if (typeof window === "undefined" || typeof document === "undefined") return;
+    if (!sectionRef.current) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsInView(true);
           // Cambiar tema global cuando la sección entra al viewport
-          document.documentElement.setAttribute("data-section-theme", theme);
+          if (typeof document !== "undefined") {
+            document.documentElement.setAttribute("data-section-theme", theme);
+          }
         }
       },
       {

@@ -23,6 +23,8 @@ export function StickyNavbar() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
@@ -46,6 +48,8 @@ export function StickyNavbar() {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
+    if (typeof window === "undefined" || typeof document === "undefined") return;
+
     const updateTheme = () => {
       const theme = document.documentElement.getAttribute("data-section-theme") || "light";
       setIsDark(theme === "dark");
