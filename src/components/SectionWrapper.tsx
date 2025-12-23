@@ -11,9 +11,9 @@ interface SectionWrapperProps {
 }
 
 const fadeInUp = {
-  initial: { opacity: 0, y: 40 },
+  initial: { opacity: 0, y: 30 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+  transition: { duration: 0.3, ease: "easeOut" },
 };
 
 export function SectionWrapper({

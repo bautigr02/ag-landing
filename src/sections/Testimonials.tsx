@@ -29,7 +29,7 @@ export function Testimonials() {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
           className="text-center mb-16"
         >
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-white mb-6">
@@ -48,7 +48,7 @@ export function Testimonials() {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.3, delay: index * 0.05, ease: "easeOut" }}
               className="flex flex-col p-8 rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10"
             >
               <blockquote className="text-lg text-white/90 mb-6 flex-grow leading-relaxed">

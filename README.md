@@ -1,5 +1,7 @@
 Landing de una sola página para **AG División Gastronomía**, metalúrgica especializada en frentes de parrilla a medida, parrillas, parrigas y accesorios, con foco en conversión a WhatsApp y llamadas desde mobile.
 
+**Diseño estilo Apple:** Secciones inmersivas, transiciones suaves al scrollear, cambios de fondo/typography entre secciones y sensación premium.
+
 ## Instalación y ejecución
 
 1. Cloná o abrí este proyecto en tu máquina.
@@ -27,10 +29,20 @@ npm run dev
 
 - `src/app/page.tsx`: página única (landing) con todas las secciones.
 - `src/app/layout.tsx`: layout general, `<head>`, metadata SEO y tipografías.
-- `src/app/globals.css`: estilos globales y tema (gris/negro metal + verde WhatsApp).
-- `src/components/*`: componentes por sección (Hero, Beneficios, Servicios, Proceso, Galería, Testimonios, FAQ, Contacto, Footer, botón flotante de WhatsApp).
-- `public/galeria/*`: imágenes placeholder de trabajos (podés reemplazarlas por fotos reales).
+- `src/app/globals.css`: estilos globales y tema (light/dark por sección).
+- `src/sections/*`: secciones principales con animaciones (Hero, Benefits, Services, Process, Gallery, Testimonials, FAQ, Contact).
+- `src/components/*`: componentes reutilizables (SectionWrapper, StickyNavbar, Footer, FloatingWhatsApp).
+- `public/galeria/*`: imágenes de trabajos reales (podés reemplazarlas por más fotos).
 - `public/og-image.jpg`: imagen placeholder para OpenGraph (compartir en redes).
+
+## Características del diseño
+
+- **Hero sticky:** Se encoge y desvanece al hacer scroll
+- **Transiciones suaves:** Cambio automático de tema (light/dark) entre secciones
+- **Animaciones:** Fade + translate sutil al entrar a cada sección
+- **Navbar sticky:** Cambia según el tema de la sección activa
+- **Galería estilo Apple:** Grid con hover zoom y overlay de texto
+- **Performance:** Transiciones rápidas (0.3s) y optimizadas
 
 ## Cómo reemplazar fotos
 
@@ -54,13 +66,13 @@ Si usás JPG/PNG, solo cambiá las extensiones en el componente `Gallery`.
 
 Los textos principales están en:
 
-- `src/components/Hero.tsx`: H1, subtítulo y CTA principal a WhatsApp.
-- `src/components/Benefits.tsx`: listado de beneficios.
-- `src/components/Products.tsx`: cards de productos/servicios.
-- `src/components/Process.tsx`: pasos del proceso.
-- `src/components/Testimonials.tsx`: testimonios placeholder.
-- `src/components/Faq.tsx`: preguntas frecuentes.
-- `src/components/Contact.tsx`: dirección, horarios, zona de cobertura, WhatsApp y botón “Llamar”.
+- `src/sections/Hero.tsx`: H1, subtítulo y CTA principal a WhatsApp.
+- `src/sections/Benefits.tsx`: listado de beneficios.
+- `src/sections/Services.tsx`: cards de productos/servicios.
+- `src/sections/Process.tsx`: pasos del proceso.
+- `src/sections/Testimonials.tsx`: testimonios placeholder.
+- `src/sections/FAQ.tsx`: preguntas frecuentes.
+- `src/sections/Contact.tsx`: dirección, horarios, zona de cobertura, WhatsApp y botón "Llamar".
 - `src/components/Footer.tsx`: datos de negocio y año ©.
 
 Los links de WhatsApp ya están configurados con el número:
@@ -92,3 +104,7 @@ El botón flotante de WhatsApp:
 - Abre una conversación directa con un mensaje prellenado.
 
 Si querés cambiar el texto inicial del mensaje, editá la constante del `encodeURIComponent` en ese componente.
+
+## Publicar la landing
+
+Ver el archivo `DEPLOY.md` para instrucciones detalladas de cómo publicar en Vercel, Netlify u otras plataformas.

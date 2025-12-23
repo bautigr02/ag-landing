@@ -17,7 +17,7 @@ export function Contact() {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
           className="text-center mb-16"
         >
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-white mb-6">
@@ -34,7 +34,7 @@ export function Contact() {
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
             className="p-8 rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10 space-y-6"
           >
             <div>
@@ -104,7 +104,7 @@ export function Contact() {
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
             className="p-8 rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10"
           >
             <div className="text-xs font-semibold uppercase tracking-wider text-white/60 mb-4">

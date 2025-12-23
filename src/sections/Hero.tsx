@@ -27,18 +27,31 @@ export function Hero() {
 
   return (
     <div ref={containerRef} className="relative min-h-screen">
+      {/* Imagen de fondo */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/galeria/IMG_6992.jpeg"
+          alt="Frente de parrilla instalado por AG División Gastronomía"
+          fill
+          priority
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/70" />
+        <div className="absolute inset-0 bg-white/40 lg:bg-white/60" />
+      </div>
+
       {/* Sticky container */}
-      <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
+      <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-0">
         <motion.div
           style={{ opacity, scale, y }}
-          className="mx-auto max-w-7xl px-6 w-full"
+          className="relative z-10 mx-auto max-w-7xl px-6 w-full"
         >
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Texto */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
               className="space-y-8"
             >
               <div className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-gray-50 px-4 py-1.5 text-xs font-medium text-gray-700">
@@ -85,22 +98,6 @@ export function Hero() {
                   {WHATSAPP_NUMBER}
                 </div>
               </div>
-            </motion.div>
-
-            {/* Imagen */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="relative aspect-[4/3] rounded-3xl overflow-hidden"
-            >
-              <Image
-                src="/galeria/IMG_6992.jpeg"
-                alt="Frente de parrilla instalado por AG División Gastronomía"
-                fill
-                priority
-                className="object-cover"
-              />
             </motion.div>
           </div>
         </motion.div>
