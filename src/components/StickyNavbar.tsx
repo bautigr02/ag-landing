@@ -45,12 +45,14 @@ export function StickyNavbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Inicializar como light (letras oscuras) ya que el Hero es light
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined" || typeof document === "undefined") return;
 
     const updateTheme = () => {
+      // Por defecto light (letras oscuras) si no hay tema definido
       const theme = document.documentElement.getAttribute("data-section-theme") || "light";
       setIsDark(theme === "dark");
     };
@@ -79,7 +81,7 @@ export function StickyNavbar() {
       <div className="mx-auto max-w-7xl px-6 py-4">
         <div className="flex items-center justify-between">
           <a href="#inicio" className="flex items-center gap-3">
-            <div className="relative h-8 w-8">
+            <div className="relative h-14 w-14 scale-110">
               <Image
                 src="/galeria/logosinfondo.png"
                 alt="AG Gastronomía"

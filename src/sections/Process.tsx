@@ -7,12 +7,12 @@ const steps = [
   {
     number: "01",
     title: "Contacto y medidas",
-    text: "Nos mandás fotos y medidas aproximadas por WhatsApp o coordinamos una visita en obra en San Pedro y zona.",
+    text: "Nos mandás fotos y medidas por WhatsApp (te asesoramos) o coordinamos una visita en San Pedro y zona.",
   },
   {
     number: "02",
     title: "Fabricación metalúrgica",
-    text: "Fabricamos el frente, parrilla y accesorios en nuestro taller, con materiales pensados para alta temperatura.",
+    text: "Fabricamos el frente, parrilla y accesorios en nuestro taller, con materiales pensados para altas temperaturas.",
   },
   {
     number: "03",

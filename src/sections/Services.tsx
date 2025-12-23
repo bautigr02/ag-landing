@@ -49,16 +49,28 @@ const services = [
     ],
   },
   {
-    id: "especiales",
-    title: "Trabajos especiales",
-    description:
-      "Proyectos a medida para locales gastronómicos, quinchos y espacios específicos.",
+  id: "especiales",
+  title: "Trabajos especiales",
+  description:
+  "Proyectos a medida para locales gastronómicos, quinchos y espacios específicos.",
     features: [
       "Diseños según plano o idea",
       "Adaptación a equipamiento existente",
       "Coordinación con otras obras",
     ],
   },
+  {
+  id: "materiales",
+  title: "Materiales de alta calidad",
+  description:
+  "Nuestros trabajos incluyen varios materiales.",
+    features: [
+      "Acero inoxidable",
+      "Chapa con pintura resistente al calor y al uso intensivo",
+      "Chapa galvanizada en parrillas",
+      "Tablas de madera en parrigas"
+    ],
+  }
 ];
 
 const whatsappHref = `https://wa.me/5493329473469?text=${encodeURIComponent(
@@ -80,8 +92,7 @@ export function Services() {
             Productos y servicios
           </h2>
           <p className="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto">
-            Fabricamos y colocamos todo el frente de tu parrilla. Podés elegir
-            solo fabricación o fabricación + colocación en obra.
+            Fabricamos y colocamos todo el frente de tu parrilla. Nos responsabilizamos por el resultado y la calidad de nuestros trabajos.
           </p>
         </motion.div>
 

@@ -5,19 +5,19 @@ import { SectionWrapper } from "@/components/SectionWrapper";
 
 const testimonials = [
   {
-    name: "Juan, quincho en San Pedro",
+    name: "Leo, quincho en San Pedro",
     city: "San Pedro, Buenos Aires",
-    text: "Quedó todo a medida, el frente cierra perfecto y la parrilla es muy cómoda para usar. Cumplieron con los tiempos.",
+    text: "Gracias ale por el trabajo. Quedó todo perfecto y el quincho cambia completamente. Un lujo!",
   },
   {
     name: "María, edificio en CABA",
     city: "Ciudad de Buenos Aires",
-    text: "Necesitábamos frentes prolijos para un edificio, respetando medidas del consorcio. El trabajo quedó prolijo y bien terminado.",
+    text: "Gracias chicos por la buena onda y lo rapido que colocaron.",
   },
   {
     name: "Rubén, gastronómico",
     city: "Rosario, Santa Fe",
-    text: "Hicieron la parrigas y los frentes del local. Buena respuesta y se adaptaron a lo que necesitábamos para trabajar todos los días.",
+    text: "Muy bueno el frente de la barra y la cocina del local. Cambio completamente la estetica y la comodidad.",
   },
 ];
 
@@ -36,8 +36,7 @@ export function Testimonials() {
             Lo que dicen nuestros clientes
           </h2>
           <p className="text-xl md:text-2xl text-white/70 max-w-2xl mx-auto">
-            Testimonios de clientes reales. Podés reemplazar estos textos cuando
-            quieras por opiniones de tus trabajos.
+            Testimonios de clientes conformes sobre nuestros trabajos. Te invitamos a nuestro <a href="https://www.tiktok.com/@ag.divisiongastronomia" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">TikTok</a>
           </p>
         </motion.div>
 

@@ -46,9 +46,7 @@ export function Gallery() {
             Trabajos y frentes de parrilla
           </h2>
           <p className="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto">
-            Algunas fotos de trabajos reales. Podés seguir cargando imágenes en{" "}
-            <span className="font-mono text-sm">/public/galeria</span> y
-            actualizar esta grilla cuando quieras.
+            Algunas fotos de trabajos reales. Para ver más trabajos, podés ver la galería completa en nuestro <a href="https://www.instagram.com/ag.divisiongastronomia/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">Instagram</a>
           </p>
         </motion.div>
 

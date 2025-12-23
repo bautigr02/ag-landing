@@ -44,12 +44,7 @@ export function Gallery() {
               Trabajos y frentes de parrilla
             </h2>
             <p className="mt-2 max-w-2xl text-sm text-slate-700">
-              Fotos de frentes, detalles y parrillas terminadas. Podés seguir
-              cargando imágenes en{" "}
-              <span className="font-mono text-xs text-slate-800">
-                /public/galeria
-              </span>{" "}
-              y actualizar esta grilla cuando quieras.
+              Fotos de frentes, detalles y parrillas terminadas.
             </p>
           </div>
         </div>
