@@ -29,17 +29,21 @@ export function Hero() {
 
   return (
     <div ref={containerRef} className="relative min-h-screen">
-      {/* Imagen de fondo */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/galeria/IMG_6992.jpeg"
-          alt="Frente de parrilla instalado por AG División Gastronomía"
-          fill
-          priority
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/70" />
-        <div className="absolute inset-0 bg-white/40 lg:bg-white/60" />
+      {/* Imagen de fondo - visible desde el medio hacia la derecha */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/galeria/IMG_6992.jpeg"
+            alt="Frente de parrilla instalado por AG División Gastronomía"
+            fill
+            priority
+            className="object-cover object-[center_right]"
+          />
+        </div>
+        {/* Degradado desde la izquierda (opaco) hacia el centro (transparente) */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 via-50% to-transparent" />
+        {/* Overlay sutil adicional para mejor legibilidad del texto */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white/60 via-white/20 to-transparent lg:from-white/50 lg:via-white/10" />
       </div>
 
       {/* Sticky container */}
