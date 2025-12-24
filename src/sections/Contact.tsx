@@ -8,6 +8,8 @@ const WHATSAPP_LINK = `https://wa.me/5493329473469?text=${encodeURIComponent(
   "Hola, quiero coordinar un presupuesto para frente de parrilla y colocación."
 )}`;
 const PHONE_LINK = "tel:+5493329473469";
+const EMAIL = "agdivisiongastronomia@gmail.com";
+const EMAIL_LINK = `mailto:${EMAIL}`;
 
 export function Contact() {
   return (
@@ -29,10 +31,10 @@ export function Contact() {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="max-w-2xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.2, ease: "easeOut" }}
             className="p-8 rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10 space-y-6"
@@ -80,6 +82,18 @@ export function Contact() {
                 WhatsApp / Teléfono
               </div>
               <div className="text-lg text-white">{WHATSAPP_NUMBER_DISPLAY}</div>
+            </div>
+
+            <div>
+              <div className="text-xs font-semibold uppercase tracking-wider text-white/60 mb-2">
+                Email
+              </div>
+              <a
+                href={EMAIL_LINK}
+                className="text-lg text-white hover:text-[#25d366] transition-colors"
+              >
+                {EMAIL}
+              </a>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -140,84 +154,6 @@ export function Contact() {
                 </a>
               </div>
             </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-            className="p-8 rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10"
-          >
-            <div className="text-xs font-semibold uppercase tracking-wider text-white/60 mb-4">
-              Enviar mensaje
-            </div>
-            <form
-              action="https://formsubmit.co/agdivisiongastronomia@gmail.com"
-              method="POST"
-              className="space-y-4"
-            >
-              <input type="hidden" name="_subject" value="Nuevo mensaje desde la web - AG División Gastronomía" />
-              <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_template" value="box" />
-              <div>
-                <label htmlFor="name" className="block text-sm text-white/80 mb-2">
-                  Nombre
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/40 transition-all"
-                  placeholder="Tu nombre"
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm text-white/80 mb-2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/40 transition-all"
-                  placeholder="tu@email.com"
-                />
-              </div>
-              <div>
-                <label htmlFor="phone" className="block text-sm text-white/80 mb-2">
-                  Teléfono (opcional)
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/40 transition-all"
-                  placeholder="+54 9..."
-                />
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-sm text-white/80 mb-2">
-                  Mensaje
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  rows={4}
-                  className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/40 transition-all resize-none"
-                  placeholder="Contanos sobre tu proyecto..."
-                />
-              </div>
-              <button
-                type="submit"
-                className="w-full rounded-full bg-white px-8 py-4 text-base font-semibold text-black transition-all hover:bg-white/90 active:scale-95"
-              >
-                Enviar mensaje
-              </button>
-            </form>
           </motion.div>
         </div>
       </div>

@@ -44,7 +44,7 @@ const services = [
     title: "Parrillas trasladables",
     description:
       "Parrigas para gas o leña, ideales para balcones, interiores o exteriores",
-      features: [
+    features: [
       "Medidas adaptadas a distintos espacios y necesidades",
       "Agregale tapa, puertas, mesadas de madera o ladrillo, desengresador, guía de gas y más accesorios.",
       "De Acero Inoxidable o Chapa resistente al calor y al uso intensivo",
@@ -83,18 +83,22 @@ export function Services() {
 
   // Prevenir scroll del body cuando el modal está abierto
   useEffect(() => {
+    if (typeof document === "undefined") return;
     if (selectedImage !== null) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
     }
     return () => {
-      document.body.style.overflow = "unset";
+      if (typeof document !== "undefined") {
+        document.body.style.overflow = "unset";
+      }
     };
   }, [selectedImage]);
 
   // Cerrar con ESC
   useEffect(() => {
+    if (typeof window === "undefined") return;
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape" && selectedImage !== null) {
         setSelectedImage(null);
@@ -105,13 +109,13 @@ export function Services() {
   }, [selectedImage]);
 
   return (
-    <SectionWrapper id="servicios" theme="light">
+    <SectionWrapper id="servicios" theme="light" disableAnimation={true}>
       <div className="mx-auto max-w-7xl px-6 py-24 md:py-32">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.2, ease: "easeOut" }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
           className="text-center mb-16"
         >
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-gray-900 mb-6">
@@ -126,11 +130,16 @@ export function Services() {
           {services.map((service, index) => (
             <motion.div
               key={service.id}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.2, delay: index * 0.03, ease: "easeOut" }}
-              className="flex flex-col p-8 rounded-3xl border border-gray-200 bg-white hover:shadow-xl transition-all duration-300 group"
+              viewport={{ once: true, margin: "-20px" }}
+              transition={{ 
+                duration: 0.5, 
+                delay: index * 0.08, 
+                ease: [0.22, 1, 0.36, 1], // Cubic bezier más suave
+                type: "tween"
+              }}
+              className="flex flex-col p-8 rounded-3xl border border-gray-200 bg-white hover:shadow-xl group"
             >
               {/* Imagen clickeable */}
               <div

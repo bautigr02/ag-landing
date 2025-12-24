@@ -55,13 +55,13 @@ export function FAQ() {
 
         <dl className="space-y-4">
           {faqs.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.2, delay: index * 0.02, ease: "easeOut" }}
-            >
+              >
               <dt>
                 <button
                   onClick={() => setOpenIndex(openIndex === index ? null : index)}
@@ -80,19 +80,19 @@ export function FAQ() {
                 </button>
               </dt>
               <motion.dd
-                initial={false}
-                animate={{
+                  initial={false}
+                  animate={{
                   height: openIndex === index ? "auto" : 0,
                   opacity: openIndex === index ? 1 : 0,
-                }}
+                  }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
-                className="overflow-hidden"
-              >
+                  className="overflow-hidden"
+                >
                 <div className="p-6 pt-0 text-gray-600 leading-relaxed">
                   {item.a}
                 </div>
               </motion.dd>
-            </motion.div>
+                </motion.div>
           ))}
         </dl>
       </div>

@@ -8,12 +8,13 @@ interface SectionWrapperProps {
   id: string;
   theme?: "light" | "dark";
   className?: string;
+  disableAnimation?: boolean; // Nueva prop para desactivar animación
 }
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.2 },
+  transition: { duration: 0.3, ease: "easeOut" },
 };
 
 export function SectionWrapper({
@@ -21,9 +22,10 @@ export function SectionWrapper({
   id,
   theme = "light",
   className = "",
+  disableAnimation = false,
 }: SectionWrapperProps) {
   const sectionRef = useRef<HTMLElement>(null);
-  const [isInView, setIsInView] = useState(false);
+  const [isInView, setIsInView] = useState(true); // Cambiado a true para que sea visible por defecto
 
   useEffect(() => {
     if (typeof window === "undefined" || typeof document === "undefined") return;
@@ -40,8 +42,8 @@ export function SectionWrapper({
         }
       },
       {
-        threshold: 0.2,
-        rootMargin: "-10% 0px -10% 0px",
+        threshold: 0.1, // Reducido de 0.2 a 0.1 para mejor detección en mobile
+        rootMargin: "-5% 0px -5% 0px", // Reducido de -10% a -5% para mejor detección en mobile
       }
     );
 
@@ -59,6 +61,19 @@ export function SectionWrapper({
 
   const bgClass = theme === "dark" ? "bg-black text-white" : "bg-white text-gray-900";
 
+  // Si disableAnimation es true, renderizar sin animación
+  if (disableAnimation) {
+    return (
+      <section
+        ref={sectionRef}
+        id={id}
+        className={`relative min-h-screen ${bgClass} ${className}`}
+      >
+        {children}
+      </section>
+    );
+  }
+
   return (
     <motion.section
       ref={sectionRef}
@@ -67,6 +82,7 @@ export function SectionWrapper({
       initial="initial"
       animate={isInView ? "animate" : "initial"}
       variants={fadeInUp}
+      style={{ willChange: isInView ? "auto" : "transform, opacity" }} // Optimización para evitar reseteos
     >
       {children}
     </motion.section>

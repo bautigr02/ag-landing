@@ -90,10 +90,10 @@ export function Hero() {
 
       {/* Sticky container */}
       <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-0">
-        <motion.div
+          <motion.div
           style={{ opacity, scale, y }}
           className="relative z-10 mx-auto max-w-7xl px-6 w-full"
-        >
+          >
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Texto */}
             <motion.div
@@ -139,13 +139,13 @@ export function Hero() {
                 {/* Burbuja de descripción - ABAJO */}
                 <div className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-gray-50 px-4 py-1.5 text-xs font-medium text-gray-700 w-fit">
                   <span className="h-2 w-2 rounded-full bg-[#25d366]" />
-                  Metalúrgica especializada en parrillas y frentes a medida
+              Metalúrgica especializada en parrillas y frentes a medida
                 </div>
               </div>
 
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-gray-900 leading-[1.1]">
-                Frentes de parrilla{" "}
-                <span className="block text-gray-600">a medida</span>
+              Frentes de parrilla{" "}
+              <span className="block text-gray-600">a medida</span>
               </h1>
 
               <p className="text-xl md:text-2xl text-gray-600 max-w-xl leading-relaxed">
@@ -154,38 +154,38 @@ export function Hero() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <a
-                  href={whatsappHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
                   className="inline-flex items-center justify-center rounded-full bg-[#25d366] px-8 py-4 text-base font-semibold text-white transition-all hover:bg-[#20ba5a] active:scale-95"
-                >
-                  Pedir presupuesto por WhatsApp
-                </a>
-                <a
-                  href="#trabajos"
+              >
+                Pedir presupuesto por WhatsApp
+              </a>
+              <a
+                href="#trabajos"
                   className="inline-flex items-center justify-center rounded-full border-2 border-gray-900 px-8 py-4 text-base font-semibold text-gray-900 transition-all hover:bg-gray-900 hover:text-white active:scale-95"
-                >
-                  Ver trabajos
-                </a>
+              >
+                Ver trabajos
+              </a>
               </div>
 
               <div className="pt-4 text-sm text-gray-500 space-y-1">
-                <div>
+              <div>
                   <span className="font-semibold text-gray-700">Zona:</span> San
-                  Pedro y zona, CABA, Rosario y alrededores
-                </div>
-                <div>
+                Pedro y zona, CABA, Rosario y alrededores
+              </div>
+              <div>
                   <span className="font-semibold text-gray-700">
                     Tel/WhatsApp:
                   </span>{" "}
-                  {WHATSAPP_NUMBER}
+                {WHATSAPP_NUMBER}
                 </div>
               </div>
             </motion.div>
           </div>
-        </motion.div>
-      </div>
+          </motion.div>
+        </div>
 
       {/* Spacer para permitir scroll */}
       <div className="h-screen" />
