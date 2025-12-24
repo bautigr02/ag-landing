@@ -5,11 +5,9 @@ import Image from "next/image";
 
 const sections = [
   { id: "inicio", label: "Inicio" },
-  { id: "beneficios", label: "Beneficios" },
   { id: "servicios", label: "Servicios" },
   { id: "proceso", label: "Proceso" },
   { id: "trabajos", label: "Trabajos" },
-  { id: "testimonios", label: "Testimonios" },
   { id: "faq", label: "FAQ" },
   { id: "contacto", label: "Contacto" },
 ];
@@ -45,43 +43,18 @@ export function StickyNavbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Inicializar como light (letras oscuras) ya que el Hero es light
-  const [isDark, setIsDark] = useState(false);
-
-  useEffect(() => {
-    if (typeof window === "undefined" || typeof document === "undefined") return;
-
-    const updateTheme = () => {
-      // Por defecto light (letras oscuras) si no hay tema definido
-      const theme = document.documentElement.getAttribute("data-section-theme") || "light";
-      setIsDark(theme === "dark");
-    };
-
-    // Observer para cambios en el atributo
-    const observer = new MutationObserver(updateTheme);
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["data-section-theme"],
-    });
-
-    updateTheme();
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? isDark
-            ? "bg-black/80 backdrop-blur-xl border-b border-white/10"
-            : "bg-white/80 backdrop-blur-xl border-b border-gray-200/50"
+          ? "bg-black/80 backdrop-blur-xl border-b border-white/10"
           : "bg-transparent"
       }`}
     >
       <div className="mx-auto max-w-7xl px-6 py-4">
         <div className="flex items-center justify-between">
           <a href="#inicio" className="flex items-center gap-3">
-            <div className="relative h-14 w-14 scale-110">
+            <div className="relative h-16 w-16 scale-110">
               <Image
                 src="/galeria/logosinfondo.png"
                 alt="AG Gastronomía"
@@ -90,11 +63,7 @@ export function StickyNavbar() {
                 priority
               />
             </div>
-            <span
-              className={`text-sm font-semibold transition-colors ${
-                isDark ? "text-white" : "text-gray-900"
-              }`}
-            >
+            <span className="text-base font-semibold text-white transition-colors">
               AG Gastronomía
             </span>
           </a>
@@ -106,12 +75,8 @@ export function StickyNavbar() {
                 href={`#${section.id}`}
                 className={`text-xs font-medium transition-colors ${
                   activeSection === section.id
-                    ? isDark
-                      ? "text-white"
-                      : "text-gray-900"
-                    : isDark
-                      ? "text-white/60 hover:text-white"
-                      : "text-gray-600 hover:text-gray-900"
+                    ? "text-white"
+                    : "text-white/60 hover:text-white"
                 }`}
               >
                 {section.label}

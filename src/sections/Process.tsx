@@ -34,7 +34,7 @@ export function Process() {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
           className="text-center mb-20"
         >
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-white mb-6">
@@ -53,7 +53,7 @@ export function Process() {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.3, delay: index * 0.05, ease: "easeOut" }}
+              transition={{ duration: 0.2, delay: index * 0.03, ease: "easeOut" }}
               className="p-8 rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10"
             >
               <div className="flex items-start gap-6">

@@ -99,27 +99,19 @@ export function Hero() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
+              transition={{ duration: 0.2, delay: 0.05, ease: "easeOut" }}
               className="space-y-8"
             >
               {/* Contenedor de burbujas */}
               <div className="flex flex-col gap-2">
-                {/* Burbuja de estado (Abierto/Cerrado) - ARRIBA con botón de ubicación */}
+                {/* Burbuja de estado (solo cuando está abierto) con botón de ubicación */}
                 <div className="flex items-center gap-2 flex-wrap">
-                  <div
-                    className={`inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-xs font-medium w-fit ${
-                      isOpenNow
-                        ? "border-green-200 bg-green-50 text-green-700"
-                        : "border-orange-200 bg-orange-50 text-orange-700"
-                    }`}
-                  >
-                    <span
-                      className={`h-2 w-2 rounded-full ${
-                        isOpenNow ? "bg-green-500" : "bg-orange-500"
-                      }`}
-                    />
-                    {isOpenNow ? "Abierto ahora" : "Cerrado, dejanos un mensaje"}
-                  </div>
+                  {isOpenNow && (
+                    <div className="inline-flex items-center gap-2 rounded-full border border-green-200 bg-green-50 px-4 py-1.5 text-xs font-medium text-green-700 w-fit">
+                      <span className="h-2 w-2 rounded-full bg-green-500" />
+                      Abierto ahora
+                    </div>
+                  )}
                   <a
                     href="https://maps.google.com/?q=Salta+1551+San+Pedro+Buenos+Aires+Argentina"
                     target="_blank"

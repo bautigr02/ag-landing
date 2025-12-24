@@ -1,76 +1,74 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { SectionWrapper } from "@/components/SectionWrapper";
+import { useState, useEffect } from "react";
 
 const services = [
   {
     id: "frentes",
-    title: "Frentes de parrilla a medida",
+    title: "Frentes de parrilla",
     description:
-      "Diseño y fabricación a medida para que el frente quede alineado con tu muro y tus aberturas.",
+      "Diseño y fabricación a medida que renueva tu espacio.",
     features: [
       "Medidas según obra o espacio existente",
-      "Puertas, cajones y registros a pedido",
-      "Opciones de terminación y pintura",
+      "En acero inoxidable o chapa resistente al calor y al uso intensivo",
+      "Terminaciones y pinturas a elección",
+      "Parrillas completas o solo frente",
+      "Sumale bajoparrilla, horno pizzero, bacha y más"
     ],
+    image: {
+      src: "/galeria/imgFrenteInox.jpeg",
+      alt: "Frente de parrilla en acero inoxidable instalado",
+    },
   },
   {
     id: "parrillas",
     title: "Parrillas completas",
     description:
-      "Parrillas listas para usar, con sistema de elevación y parrillas reforzadas.",
+      "Parrillas listas para usar, con sistema de elevación y parrillas reforzadas",
     features: [
       "Parrilla en V o redonda",
       "Elevación a manija o rueda",
       "Canaletas y grasera",
+      "Acero inoxidable o chapa galvanizada",
     ],
+    image: {
+      src: "/galeria/IMG_6993.jpeg",
+      alt: "Parrilla completa con sistema de elevación",
+    },
   },
   {
     id: "parrigas",
-    title: "Parrigas",
+    title: "Parrillas trasladables",
     description:
-      "Parrigas robustas para gas o carbón, ideales para uso gastronómico o intensivo.",
-    features: [
-      "Estructuras robustas",
-      "Medidas estándar o especiales",
-      "Pensadas para uso continuo",
+      "Parrigas para gas o leña, ideales para balcones, interiores o exteriores",
+      features: [
+      "Medidas adaptadas a distintos espacios y necesidades",
+      "Agregale tapa, puertas, mesadas de madera o ladrillo, desengresador, guía de gas y más accesorios.",
+      "De Acero Inoxidable o Chapa resistente al calor y al uso intensivo",
     ],
+    image: {
+      src: "/galeria/IMG_6994.jpeg",
+      alt: "Parriga robusta para uso gastronómico",
+    },
   },
   {
-    id: "accesorios",
-    title: "Accesorios para parrilla",
+    id: "especiales",
+    title: "Trabajos especiales",
     description:
-      "Todo lo que completa tu parrilla: puertas, cajones, braseros y más.",
+      "Proyectos a medida para casas, locales o espacios específicos",
     features: [
-      "Puertas metálicas y de inspección",
-      "Cajones y ceniceros",
-      "Braseros, tapas y rejillas",
+      "Trabajamos estufas a leña propias y linea Lepen",
+      "Fabricamos sistemas de canaletas",
+      "Diseños según plano, instalaciones existentes o ideas",
     ],
+    image: {
+      src: "/galeria/IMG_6995.jpeg",
+      alt: "Trabajo especial a medida",
+    },
   },
-  {
-  id: "especiales",
-  title: "Trabajos especiales",
-  description:
-  "Proyectos a medida para locales gastronómicos, quinchos y espacios específicos.",
-    features: [
-      "Diseños según plano o idea",
-      "Adaptación a equipamiento existente",
-      "Coordinación con otras obras",
-    ],
-  },
-  {
-  id: "materiales",
-  title: "Materiales de alta calidad",
-  description:
-  "Nuestros trabajos incluyen varios materiales.",
-    features: [
-      "Acero inoxidable",
-      "Chapa con pintura resistente al calor y al uso intensivo",
-      "Chapa galvanizada en parrillas",
-      "Tablas de madera en parrigas"
-    ],
-  }
 ];
 
 const whatsappHref = `https://wa.me/5493329473469?text=${encodeURIComponent(
@@ -78,6 +76,34 @@ const whatsappHref = `https://wa.me/5493329473469?text=${encodeURIComponent(
 )}`;
 
 export function Services() {
+  const [selectedImage, setSelectedImage] = useState<{
+    src: string;
+    alt: string;
+  } | null>(null);
+
+  // Prevenir scroll del body cuando el modal está abierto
+  useEffect(() => {
+    if (selectedImage !== null) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [selectedImage]);
+
+  // Cerrar con ESC
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && selectedImage !== null) {
+        setSelectedImage(null);
+      }
+    };
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, [selectedImage]);
+
   return (
     <SectionWrapper id="servicios" theme="light">
       <div className="mx-auto max-w-7xl px-6 py-24 md:py-32">
@@ -85,27 +111,61 @@ export function Services() {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
           className="text-center mb-16"
         >
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-gray-900 mb-6">
             Productos y servicios
           </h2>
           <p className="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto">
-            Fabricamos y colocamos todo el frente de tu parrilla. Nos responsabilizamos por el resultado y la calidad de nuestros trabajos.
+            Fabricamos y colocamos todo el frente de tu parrilla. Pero no solo hacemos eso...
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8">
           {services.map((service, index) => (
             <motion.div
               key={service.id}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.3, delay: index * 0.05, ease: "easeOut" }}
+              transition={{ duration: 0.2, delay: index * 0.03, ease: "easeOut" }}
               className="flex flex-col p-8 rounded-3xl border border-gray-200 bg-white hover:shadow-xl transition-all duration-300 group"
             >
+              {/* Imagen clickeable */}
+              <div
+                className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-gray-100 mb-6 cursor-pointer"
+                onClick={() => setSelectedImage(service.image)}
+              >
+                <Image
+                  src={service.image.src}
+                  alt={service.image.alt}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="rounded-full bg-white/90 backdrop-blur-sm p-3">
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="text-gray-900"
+                    >
+                      <path
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
               <h3 className="text-2xl font-semibold text-gray-900 mb-3">
                 {service.title}
               </h3>
@@ -130,6 +190,80 @@ export function Services() {
           ))}
         </div>
       </div>
+
+      {/* Modal/Lightbox */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm"
+            onClick={() => setSelectedImage(null)}
+          >
+            {/* Botón cerrar */}
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-4 right-4 z-10 rounded-full bg-white/10 backdrop-blur-sm p-3 text-white hover:bg-white/20 transition-colors"
+              aria-label="Cerrar"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M18 6L6 18M6 6l12 12"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+
+            {/* Contenedor de imagen con padding adecuado */}
+            <div className="flex items-center justify-center w-full h-full px-12 md:px-20 py-4">
+              <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="relative flex flex-col items-center justify-center max-w-full max-h-full"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Contenedor de imagen que se adapta al tamaño */}
+                <div className="relative w-full h-full flex items-center justify-center max-h-[calc(100vh-200px)]">
+                  <Image
+                    src={selectedImage.src}
+                    alt={selectedImage.alt}
+                    width={1920}
+                    height={1080}
+                    className="object-contain max-w-full max-h-full rounded-lg"
+                    priority
+                    style={{
+                      width: 'auto',
+                      height: 'auto',
+                      maxWidth: '100%',
+                      maxHeight: 'calc(100vh - 200px)',
+                    }}
+                  />
+                </div>
+                {/* Información debajo de la imagen */}
+                <div className="mt-4 text-center max-w-4xl">
+                  <p className="text-white text-lg">
+                    {selectedImage.alt}
+                  </p>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </SectionWrapper>
   );
 }
+
