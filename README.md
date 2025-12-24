@@ -1,110 +1,88 @@
-Landing de una sola página para **AG División Gastronomía**, metalúrgica especializada en frentes de parrilla a medida, parrillas, parrigas y accesorios, con foco en conversión a WhatsApp y llamadas desde mobile.
+# AG División Gastronomía – Landing Page
 
-**Diseño estilo Apple:** Secciones inmersivas, transiciones suaves al scrollear, cambios de fondo/typography entre secciones y sensación premium.
+Landing page para **AG División Gastronomía**, una metalúrgica especializada en la **fabricación y colocación de frentes de parrilla**, parrillas, parrigas y otros productos.
 
-## Instalación y ejecución
+El objetivo del sitio es **presentar el servicio de forma clara, profesional y visual**, y **convertir visitas en consultas directas por WhatsApp**, especialmente desde dispositivos móviles.
 
-1. Cloná o abrí este proyecto en tu máquina.
-2. En una terminal, parate en la carpeta del proyecto:
+Publicada en: https://ag-sanpedro.vercel.app
 
-```bash
-cd ag-landing
+---
+
+## 🎯 Objetivo del proyecto
+
+* Mostrar los servicios y trabajos de la metalúrgica de forma moderna y confiable
+* Transmitir una imagen **profesional y premium**
+* Facilitar el contacto inmediato con potenciales clientes
+* Servir como base escalable
+
+---
+
+## 🧱 Características principales
+
+* Landing **one-page** (single page)
+* Diseño **responsive** (mobile-first)
+* Estética moderna con **scroll por secciones**
+* Animaciones suaves con Framer Motion
+* Botón flotante de **WhatsApp** siempre visible
+* Galería de trabajos
+* Información clara de negocio
+* SEO básico configurado
+
+---
+
+## 🛠️ Tecnologías utilizadas
+
+* **Next.js**
+* **TypeScript**
+* **Tailwind CSS**
+* **Framer Motion**
+* Deploy en **Vercel**
+
+---
+
+## 📍 Información del negocio
+
+* **Nombre:** AG División Gastronomía
+* **Dirección:** Salta 1551, San Pedro, Buenos Aires, Argentina
+* **Zona de trabajo:** San Pedro y zona, CABA, Rosario y alrededores
+---
+
+## 📂 Estructura del proyecto
+
+```txt
+/app
+  /components
+  /sections
+  /styles
+/public
+  /galeria
+README.md
 ```
 
-3. Instalá dependencias (solo la primera vez):
+* `sections/`: secciones principales de la landing (Hero, Servicios, Galería, Contacto, etc.)
+* `components/`: componentes reutilizables
+* `public/galeria/`: imágenes de trabajos reales (placeholders por defecto)
+
+---
+
+## 🚀 Cómo correr el proyecto localmente
 
 ```bash
 npm install
-```
-
-4. Levantá el servidor de desarrollo:
-
-```bash
 npm run dev
 ```
 
-5. Abrí `http://localhost:3000` en tu navegador.
+Luego abrir:
 
-## Estructura principal
-
-- `src/app/page.tsx`: página única (landing) con todas las secciones.
-- `src/app/layout.tsx`: layout general, `<head>`, metadata SEO y tipografías.
-- `src/app/globals.css`: estilos globales y tema (light/dark por sección).
-- `src/sections/*`: secciones principales con animaciones (Hero, Benefits, Services, Process, Gallery, Testimonials, FAQ, Contact).
-- `src/components/*`: componentes reutilizables (SectionWrapper, StickyNavbar, Footer, FloatingWhatsApp).
-- `public/galeria/*`: imágenes de trabajos reales (podés reemplazarlas por más fotos).
-- `public/og-image.jpg`: imagen placeholder para OpenGraph (compartir en redes).
-
-## Características del diseño
-
-- **Hero sticky:** Se encoge y desvanece al hacer scroll
-- **Transiciones suaves:** Cambio automático de tema (light/dark) entre secciones
-- **Animaciones:** Fade + translate sutil al entrar a cada sección
-- **Navbar sticky:** Cambia según el tema de la sección activa
-- **Galería estilo Apple:** Grid con hover zoom y overlay de texto
-- **Performance:** Transiciones rápidas (0.3s) y optimizadas
-
-## Cómo reemplazar fotos
-
-- Guardá tus fotos en:
-
-```text
-public/galeria/
+```
+http://localhost:3000
 ```
 
-- Usá estos nombres sugeridos para que la galería funcione sin tocar código:
-  - `trabajo-1.svg` (o `.jpg/.png`)
-  - `trabajo-2.svg`
-  - `trabajo-3.svg`
-  - `trabajo-4.svg`
-  - `trabajo-5.svg`
-  - `trabajo-6.svg`
+---
 
-Si usás JPG/PNG, solo cambiá las extensiones en el componente `Gallery`.
+## 🌐 Deploy
 
-## Dónde editar textos
+El proyecto está preparado para deploy automático en **Vercel**.
+Cada push a la rama principal genera una nueva versión en producción.
 
-Los textos principales están en:
-
-- `src/sections/Hero.tsx`: H1, subtítulo y CTA principal a WhatsApp.
-- `src/sections/Benefits.tsx`: listado de beneficios.
-- `src/sections/Services.tsx`: cards de productos/servicios.
-- `src/sections/Process.tsx`: pasos del proceso.
-- `src/sections/Testimonials.tsx`: testimonios placeholder.
-- `src/sections/FAQ.tsx`: preguntas frecuentes.
-- `src/sections/Contact.tsx`: dirección, horarios, zona de cobertura, WhatsApp y botón "Llamar".
-- `src/components/Footer.tsx`: datos de negocio y año ©.
-
-Los links de WhatsApp ya están configurados con el número:
-
-```text
-+54 9 3329 473469
-```
-
-Si cambiás el número, buscá `wa.me/5493329473469` en el código y actualizalo.
-
-## Navegación y anchors
-
-La navegación usa anchors para moverse dentro de la misma página:
-
-- `#servicios`
-- `#proceso`
-- `#trabajos`
-- `#faq`
-- `#contacto`
-
-Podés ajustar los IDs directamente en cada `<section>` si querés cambiar los nombres.
-
-## Botón flotante de WhatsApp
-
-El botón flotante de WhatsApp:
-
-- Está implementado en `src/components/FloatingWhatsApp.tsx`.
-- Se muestra solo en mobile (`md:hidden`).
-- Abre una conversación directa con un mensaje prellenado.
-
-Si querés cambiar el texto inicial del mensaje, editá la constante del `encodeURIComponent` en ese componente.
-
-## Publicar la landing
-
-Ver el archivo `DEPLOY.md` para instrucciones detalladas de cómo publicar en Vercel, Netlify u otras plataformas.
+---
