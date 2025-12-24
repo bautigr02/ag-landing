@@ -4,6 +4,8 @@ Landing page para **AG División Gastronomía**, una metalúrgica especializada 
 
 El objetivo del sitio es **presentar el servicio de forma clara, profesional y visual**, y **convertir visitas en consultas directas por WhatsApp**, especialmente desde dispositivos móviles.
 
+Publicada en: https://ag-sanpedro.vercel.app
+
 ---
 
 ## 🎯 Objetivo del proyecto
