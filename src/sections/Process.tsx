@@ -40,10 +40,6 @@ export function Process() {
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-white mb-6">
             ¿Cómo es el proceso?
           </h2>
-          <p className="text-xl md:text-2xl text-white/70 max-w-2xl mx-auto">
-            Te acompañamos desde las primeras medidas hasta la colocación final.
-            Nos enfocamos en que el frente calce bien y funcione sin problemas.
-          </p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
