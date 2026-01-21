@@ -89,7 +89,7 @@ export function Hero() {
       </div>
 
       {/* Sticky container */}
-      <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-0">
+      <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden pt-28 md:pt-0">
           <motion.div
           style={{ opacity, scale, y }}
           className="relative z-10 mx-auto max-w-7xl px-6 w-full"

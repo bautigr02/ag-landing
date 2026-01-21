@@ -61,6 +61,8 @@ export function Featured() {
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   // Detectar si es mobile
   useEffect(() => {
@@ -121,6 +123,32 @@ export function Featured() {
     const currentGroup = Math.floor(currentIndex / imagesPerView);
     const nextGroup = (currentGroup + 1) % maxGroups;
     setCurrentIndex(nextGroup * imagesPerView);
+  };
+
+  // Funciones para manejar swipe/touch
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      goToNext();
+    } else if (isRightSwipe) {
+      goToPrevious();
+    }
   };
 
   // Navegación con teclado
@@ -214,7 +242,12 @@ export function Featured() {
 
         {/* Carrusel */}
         <div className="relative w-full">
-          <div className="relative overflow-hidden">
+          <div 
+            className="relative overflow-hidden"
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
+          >
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={currentIndex}
