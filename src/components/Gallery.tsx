@@ -10,18 +10,6 @@ const images = [
     alt: "Frente de chapa 2",
   },
   {
-    src: "/galeria/imgFrenteChapa3.jpg",
-    alt: "Frente de chapa 3",
-  },
-  {
-    src: "/galeria/imgFrenteChapa4.jpg",
-    alt: "Frente de chapa 4",
-  },
-  {
-    src: "/galeria/imgFrenteChapa5.jpeg",
-    alt: "Frente de chapa 5",
-  },
-  {
     src: "/galeria/imgFrenteInox1.jpeg",
     alt: "Frente de inox 1",
   },
@@ -30,8 +18,20 @@ const images = [
     alt: "Frente de inox 2",
   },
   {
+    src: "/galeria/imgFrenteChapa3.jpg",
+    alt: "Frente de chapa 3",
+  },
+  {
+    src: "/galeria/imgFrenteChapa4.jpg",
+    alt: "Frente de chapa 4",
+  },
+  {
     src: "/galeria/imgFrenteInox3.jpeg",
     alt: "Frente de inox 3",
+  },
+  {
+    src: "/galeria/imgFrenteChapa5.jpeg",
+    alt: "Frente de chapa 5",
   },
   {
     src: "/galeria/imgFrenteInox4.jpg",
