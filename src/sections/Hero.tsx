@@ -77,11 +77,11 @@ export function Hero() {
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/frentes/imgFrenteChapa19.jpg"
+            src="/frentes/imgFrenteChapa1.jpeg"
             alt="Frente de parrilla instalado por AG División Gastronomía"
             fill
             priority
-            className="object-cover object-center md:object-[center_right]"
+            className="object-cover object-[center_right]"
           />
         </div>
         {/* Degradado comprimido: opaco hasta ~40%, luego transparente rápidamente */}
