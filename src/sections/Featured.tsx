@@ -200,7 +200,7 @@ export function Featured() {
 
   return (
     <SectionWrapper id="destacados" theme="light">
-      <div className="mx-auto max-w-7xl px-6 py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-6 md:px-6 py-24 md:py-32">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -217,7 +217,7 @@ export function Featured() {
         </motion.div>
 
         {/* Carrusel */}
-        <div className="relative w-full">
+        <div className="relative w-full -mx-6 md:-mx-0">
           <div 
             className="relative overflow-hidden"
             onTouchStart={onTouchStart}
@@ -231,7 +231,7 @@ export function Featured() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -50 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3 justify-items-center"
+                className="grid grid-cols-1 md:grid-cols-2 gap-0"
               >
                 {visibleIndices.map((imgIndex, idx) => (
                   <motion.div
@@ -239,7 +239,9 @@ export function Featured() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.3, delay: idx * 0.1 }}
-                    className="relative h-[400px] md:h-[600px] overflow-hidden cursor-pointer group"
+                    className={`relative h-[400px] md:h-[600px] overflow-hidden cursor-pointer group ${
+                      !isMobile && idx === 0 ? 'border-r border-white/20' : ''
+                    }`}
                     onClick={() => setSelectedImageIndex(imgIndex)}
                   >
                     <Image
