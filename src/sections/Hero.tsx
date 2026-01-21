@@ -77,7 +77,7 @@ export function Hero() {
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/frentes/imgFrenteChapa12.jpeg"
+            src="/frentes/imgFrenteChapa19.jpg"
             alt="Frente de parrilla instalado por AG División Gastronomía"
             fill
             priority
