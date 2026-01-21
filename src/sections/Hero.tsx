@@ -81,7 +81,7 @@ export function Hero() {
             alt="Frente de parrilla instalado por AG División Gastronomía"
             fill
             priority
-            className="object-cover object-[center_right]"
+            className="object-cover object-center md:object-[center_right]"
           />
         </div>
         {/* Degradado comprimido: opaco hasta ~40%, luego transparente rápidamente */}
