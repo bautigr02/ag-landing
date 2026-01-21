@@ -27,16 +27,43 @@ const featuredImages = [
     alt: "Frente de parrilla en chapa - trabajo destacado",
   },
   {
+    src: "/destacados/imgFrenteChapa10.jpeg",
+    alt: "Frente de parrilla en chapa - detalle destacado",
+  },
+  {
     src: "/destacados/imgFrenteChapa12.jpeg",
     alt: "Frente de parrilla en chapa - trabajo destacado",
-  }
+  },
+  {
+    src: "/destacados/imgFrenteChapa16.jpg",
+    alt: "Frente de parrilla en chapa destacado",
+  },
+  {
+    src: "/destacados/imgFrenteChapa17.jpg",
+    alt: "Frente de parrilla en chapa - trabajo destacado",
+  },
+  {
+    src: "/destacados/imgFrenteChapa18.jpg",
+    alt: "Frente de parrilla en chapa - detalle destacado",
+  },
+  {
+    src: "/destacados/imgFrenteAntes1.jpeg",
+    alt: "Antes y después - transformación destacada",
+  },
+  {
+    src: "/destacados/imgFrenteDespues1.jpeg",
+    alt: "Resultado final - trabajo destacado",
+  },
 ];
 
 export function Featured() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return window.innerWidth < 768;
+  });
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
@@ -55,18 +82,30 @@ export function Featured() {
   const getVisibleIndices = () => {
     const indices: number[] = [];
     const imagesPerView = isMobile ? 1 : 2;
+    
+    if (featuredImages.length === 0) return indices;
+    
     const maxSlides = Math.ceil(featuredImages.length / imagesPerView);
     const currentGroup = Math.floor(currentIndex / imagesPerView);
     const startIdx = (currentGroup * imagesPerView) % featuredImages.length;
     
     for (let i = 0; i < imagesPerView; i++) {
       const idx = (startIdx + i) % featuredImages.length;
-      indices.push(idx);
+      if (idx < featuredImages.length) {
+        indices.push(idx);
+      }
     }
     return indices;
   };
 
   const visibleIndices = getVisibleIndices();
+  
+  // Asegurar que siempre haya al menos una imagen visible
+  useEffect(() => {
+    if (visibleIndices.length === 0 && featuredImages.length > 0) {
+      setCurrentIndex(0);
+    }
+  }, [visibleIndices.length]);
 
   // Auto-play carousel - avanza de a grupos según el tamaño de pantalla
   useEffect(() => {
@@ -233,7 +272,7 @@ export function Featured() {
                 transition={{ duration: 0.4, ease: "easeInOut" }}
                 className="grid grid-cols-1 md:grid-cols-2 gap-0"
               >
-                {visibleIndices.map((imgIndex, idx) => (
+                {visibleIndices.length > 0 && visibleIndices.map((imgIndex, idx) => (
                   <motion.div
                     key={`${currentIndex}-${imgIndex}`}
                     initial={{ opacity: 0 }}
