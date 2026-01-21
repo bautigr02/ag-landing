@@ -64,7 +64,7 @@ export function Gallery() {
   const [showAll, setShowAll] = useState(false);
 
   const currentImages = galleryImages[activeTab];
-  const MAX_INITIAL_IMAGES = 12;
+  const MAX_INITIAL_IMAGES = 9;
   const displayedImages = showAll ? currentImages : currentImages.slice(0, MAX_INITIAL_IMAGES);
   const hasMoreImages = currentImages.length > MAX_INITIAL_IMAGES;
 
@@ -197,14 +197,14 @@ export function Gallery() {
                 className="group relative aspect-[4/3] overflow-hidden rounded-2xl bg-gray-200 cursor-pointer hover:bg-gray-300 transition-colors duration-300 flex items-center justify-center"
                 onClick={() => setShowAll(true)}
               >
-                <div className="text-center p-8">
+                <div className="text-center p-4 md:p-8 w-full h-full flex flex-col items-center justify-center">
                   <svg
-                    width="48"
-                    height="48"
+                    width="32"
+                    height="32"
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
-                    className="mx-auto mb-4 text-gray-600 group-hover:text-gray-900 transition-colors"
+                    className="mx-auto mb-2 md:mb-4 text-gray-600 group-hover:text-gray-900 transition-colors flex-shrink-0"
                   >
                     <path
                       d="M12 5v14m7-7H5"
@@ -214,9 +214,9 @@ export function Gallery() {
                       strokeLinejoin="round"
                     />
                   </svg>
-                  <p className="text-xl font-semibold text-gray-900 mb-2">Ver más</p>
-                  <p className="text-sm text-gray-600">
-                    {currentImages.length - MAX_INITIAL_IMAGES} imágenes más
+                  <p className="text-base md:text-xl font-semibold text-gray-900 mb-1 md:mb-2">Ver más</p>
+                  <p className="text-xs md:text-sm text-gray-600 px-2">
+                    {currentImages.length - MAX_INITIAL_IMAGES} más
                   </p>
                 </div>
               </motion.div>

@@ -29,31 +29,7 @@ const featuredImages = [
   {
     src: "/destacados/imgFrenteChapa12.jpeg",
     alt: "Frente de parrilla en chapa - trabajo destacado",
-  },
-  {
-    src: "/destacados/imgFrenteChapa16.jpg",
-    alt: "Frente de parrilla en chapa destacado",
-  },
-  {
-    src: "/destacados/imgFrenteChapa17.jpg",
-    alt: "Frente de parrilla en chapa - trabajo destacado",
-  },
-  {
-    src: "/destacados/imgFrenteChapa18.jpg",
-    alt: "Frente de parrilla en chapa - detalle destacado",
-  },
-  {
-    src: "/destacados/imgFrenteAntes1.jpeg",
-    alt: "Antes y después - transformación destacada",
-  },
-  {
-    src: "/destacados/imgFrenteChapa10.jpeg",
-    alt: "Frente de parrilla en chapa - detalle destacado",
-  },
-  {
-    src: "/destacados/imgFrenteDespues1.jpeg",
-    alt: "Resultado final - trabajo destacado",
-  },
+  }
 ];
 
 export function Featured() {

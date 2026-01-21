@@ -14,7 +14,6 @@ const services = [
     features: [
       "Medidas según obra o espacio existente",
       "Terminaciones y pinturas a elección",
-      "En acero inoxidable o chapa resistente al calor y al uso intensivo",
       "Parrillas en chapa enlozada o acero inoxidable",
       "Materiales de calidad y resistentes al calor y al uso intensivo",
     ],
