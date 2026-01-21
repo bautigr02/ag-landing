@@ -51,10 +51,10 @@ export function Featured() {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // Calcular índices visibles (2 en mobile, 3 en desktop)
+  // Calcular índices visibles (1 en mobile, 2 en desktop)
   const getVisibleIndices = () => {
     const indices: number[] = [];
-    const imagesPerView = isMobile ? 2 : 3;
+    const imagesPerView = isMobile ? 1 : 2;
     const maxSlides = Math.ceil(featuredImages.length / imagesPerView);
     const currentGroup = Math.floor(currentIndex / imagesPerView);
     const startIdx = (currentGroup * imagesPerView) % featuredImages.length;
@@ -73,7 +73,7 @@ export function Featured() {
     if (!isAutoPlaying) return;
 
     const interval = setInterval(() => {
-      const imagesPerView = isMobile ? 2 : 3;
+      const imagesPerView = isMobile ? 1 : 2;
       const maxGroups = Math.ceil(featuredImages.length / imagesPerView);
       const currentGroup = Math.floor(currentIndex / imagesPerView);
       const nextGroup = (currentGroup + 1) % maxGroups;
@@ -85,7 +85,7 @@ export function Featured() {
 
   const goToPrevious = () => {
     setIsAutoPlaying(false);
-    const imagesPerView = isMobile ? 2 : 3;
+    const imagesPerView = isMobile ? 1 : 2;
     const maxGroups = Math.ceil(featuredImages.length / imagesPerView);
     const currentGroup = Math.floor(currentIndex / imagesPerView);
     const prevGroup = currentGroup === 0 ? maxGroups - 1 : currentGroup - 1;
@@ -94,7 +94,7 @@ export function Featured() {
 
   const goToNext = () => {
     setIsAutoPlaying(false);
-    const imagesPerView = isMobile ? 2 : 3;
+    const imagesPerView = isMobile ? 1 : 2;
     const maxGroups = Math.ceil(featuredImages.length / imagesPerView);
     const currentGroup = Math.floor(currentIndex / imagesPerView);
     const nextGroup = (currentGroup + 1) % maxGroups;
@@ -150,14 +150,14 @@ export function Featured() {
         // Navegación del carrusel
         if (e.key === "ArrowLeft") {
           setIsAutoPlaying(false);
-          const imagesPerView = isMobile ? 2 : 3;
+          const imagesPerView = isMobile ? 1 : 2;
           const maxGroups = Math.ceil(featuredImages.length / imagesPerView);
           const currentGroup = Math.floor(currentIndex / imagesPerView);
           const prevGroup = currentGroup === 0 ? maxGroups - 1 : currentGroup - 1;
           setCurrentIndex(prevGroup * imagesPerView);
         } else if (e.key === "ArrowRight") {
           setIsAutoPlaying(false);
-          const imagesPerView = isMobile ? 2 : 3;
+          const imagesPerView = isMobile ? 1 : 2;
           const maxGroups = Math.ceil(featuredImages.length / imagesPerView);
           const currentGroup = Math.floor(currentIndex / imagesPerView);
           const nextGroup = (currentGroup + 1) % maxGroups;
@@ -217,7 +217,7 @@ export function Featured() {
         </motion.div>
 
         {/* Carrusel */}
-        <div className="relative w-full">
+        <div className="relative w-full -mx-6 md:-mx-0">
           <div 
             className="relative overflow-hidden"
             onTouchStart={onTouchStart}
@@ -231,7 +231,7 @@ export function Featured() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -50 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="grid grid-cols-2 md:grid-cols-3 gap-0"
+                className="grid grid-cols-1 md:grid-cols-2 gap-0"
               >
                 {visibleIndices.map((imgIndex, idx) => (
                   <motion.div
@@ -239,7 +239,7 @@ export function Featured() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.3, delay: idx * 0.1 }}
-                    className="relative h-[300px] md:h-[500px] overflow-hidden cursor-pointer group"
+                    className="relative h-[400px] md:h-[600px] overflow-hidden cursor-pointer group"
                     onClick={() => setSelectedImageIndex(imgIndex)}
                   >
                     <Image
@@ -276,7 +276,7 @@ export function Featured() {
             </AnimatePresence>
 
             {/* Botón anterior */}
-            {featuredImages.length > (isMobile ? 2 : 3) && (
+            {featuredImages.length > (isMobile ? 1 : 2) && (
               <button
                 onClick={goToPrevious}
                 className="absolute left-4 top-1/2 -translate-y-1/2 z-10 rounded-full bg-white/90 backdrop-blur-sm p-3 text-gray-900 hover:bg-white transition-all hover:scale-110 active:scale-95 shadow-lg"
@@ -301,7 +301,7 @@ export function Featured() {
             )}
 
             {/* Botón siguiente */}
-            {featuredImages.length > (isMobile ? 2 : 3) && (
+            {featuredImages.length > (isMobile ? 1 : 2) && (
               <button
                 onClick={goToNext}
                 className="absolute right-4 top-1/2 -translate-y-1/2 z-10 rounded-full bg-white/90 backdrop-blur-sm p-3 text-gray-900 hover:bg-white transition-all hover:scale-110 active:scale-95 shadow-lg"
@@ -328,8 +328,8 @@ export function Featured() {
 
           {/* Indicadores de posición */}
           <div className="mt-6 flex justify-center items-center gap-2">
-            {Array.from({ length: Math.ceil(featuredImages.length / (isMobile ? 2 : 3)) }).map((_, groupIndex) => {
-              const imagesPerView = isMobile ? 2 : 3;
+            {Array.from({ length: Math.ceil(featuredImages.length / (isMobile ? 1 : 2)) }).map((_, groupIndex) => {
+              const imagesPerView = isMobile ? 1 : 2;
               const groupStart = groupIndex * imagesPerView;
               const isActive = Math.floor(currentIndex / imagesPerView) === groupIndex;
               return (
