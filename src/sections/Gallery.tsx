@@ -64,7 +64,7 @@ export function Gallery() {
   const [showAll, setShowAll] = useState(false);
 
   const currentImages = galleryImages[activeTab];
-  const MAX_INITIAL_IMAGES = 9;
+  const MAX_INITIAL_IMAGES = 7;
   const displayedImages = showAll ? currentImages : currentImages.slice(0, MAX_INITIAL_IMAGES);
   const hasMoreImages = currentImages.length > MAX_INITIAL_IMAGES;
 
