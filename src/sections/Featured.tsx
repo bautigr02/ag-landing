@@ -57,17 +57,23 @@ export function Featured() {
   // Calcular índices visibles (1 en mobile, 2 en desktop)
   const getVisibleIndices = () => {
     const indices: number[] = [];
-    const imagesPerView = isMobile ? 1 : 2;
     
     if (featuredImages.length === 0) return indices;
     
-    const maxSlides = Math.ceil(featuredImages.length / imagesPerView);
-    const currentGroup = Math.floor(currentIndex / imagesPerView);
-    const startIdx = (currentGroup * imagesPerView) % featuredImages.length;
+    // Usar window.innerWidth directamente si isMobile no está disponible aún
+    const imagesPerView = typeof window !== 'undefined' && window.innerWidth < 768 ? 1 : 2;
     
-    for (let i = 0; i < imagesPerView; i++) {
-      const idx = (startIdx + i) % featuredImages.length;
-      if (idx < featuredImages.length) {
+    // Asegurar que currentIndex esté en un rango válido
+    const maxGroups = Math.ceil(featuredImages.length / imagesPerView);
+    const maxValidIndex = Math.max(0, (maxGroups - 1) * imagesPerView);
+    const validCurrentIndex = Math.min(currentIndex, maxValidIndex);
+    
+    const currentGroup = Math.floor(validCurrentIndex / imagesPerView);
+    const startIdx = currentGroup * imagesPerView;
+    
+    for (let i = 0; i < imagesPerView && (startIdx + i) < featuredImages.length; i++) {
+      const idx = startIdx + i;
+      if (idx >= 0 && idx < featuredImages.length) {
         indices.push(idx);
       }
     }
@@ -76,12 +82,18 @@ export function Featured() {
 
   const visibleIndices = getVisibleIndices();
   
-  // Asegurar que siempre haya al menos una imagen visible
+  // Asegurar que currentIndex esté siempre en un rango válido
   useEffect(() => {
-    if (visibleIndices.length === 0 && featuredImages.length > 0) {
+    if (typeof window === "undefined") return;
+    
+    const imagesPerView = isMobile ? 1 : 2;
+    const maxGroups = Math.ceil(featuredImages.length / imagesPerView);
+    const maxIndex = Math.max(0, (maxGroups - 1) * imagesPerView);
+    
+    if (currentIndex > maxIndex) {
       setCurrentIndex(0);
     }
-  }, [visibleIndices.length]);
+  }, [isMobile, currentIndex, featuredImages.length]);
 
   // Auto-play carousel - avanza de a grupos según el tamaño de pantalla
   useEffect(() => {
