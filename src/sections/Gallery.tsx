@@ -5,50 +5,105 @@ import Image from "next/image";
 import { SectionWrapper } from "@/components/SectionWrapper";
 import { useState, useEffect } from "react";
 
-const images = [
-  {
-    src: "/galeria/imgFrenteInox.jpeg",
-    alt: "Frente de parrilla en acero inoxidable instalado",
-  },
-  {
-    src: "/galeria/imgFrenteChapaNegra.jpeg",
-    alt: "Frente de parrilla en chapa negra",
-  },
-  {
-    src: "/galeria/imgDetalleFrenteInox.jpeg",
-    alt: "Detalle de frente de parrilla en inox y terminación prolija",
-  },
-  {
-    src: "/galeria/IMG_6993.jpeg",
-    alt: "Trabajo de parrilla instalado",
-  },
-  {
-    src: "/galeria/IMG_6994.jpeg",
-    alt: "Antes de aplicar el frente de parrilla",
-  },
-  {
-    src: "/galeria/IMG_6995.jpeg",
-    alt: "Frente de parrilla a medida aplicado",
-  },
+type TabType = "frentes" | "ambientes" | "otros";
+
+const galleryImages = {
+  frentes: [
+    { src: "/frentes/imgFrenteChapa1.jpeg", alt: "Frente de parrilla en chapa negra" },
+    { src: "/frentes/imgFrenteChapa2.jpeg", alt: "Frente de parrilla en chapa negra" },
+    { src: "/frentes/imgFrenteChapa3.jpg", alt: "Frente de parrilla en chapa negra" },
+    { src: "/frentes/imgFrenteChapa4.jpg", alt: "Frente de parrilla en chapa negra" },
+    { src: "/frentes/imgFrenteChapa5.jpeg", alt: "Frente de parrilla en chapa negra" },
+    { src: "/frentes/imgFrenteChapa6.jpg", alt: "Frente de parrilla en chapa negra" },
+    { src: "/frentes/imgFrenteChapa7.jpg", alt: "Frente de parrilla en chapa negra" },
+    { src: "/frentes/imgFrenteChapa8.jpeg", alt: "Frente de parrilla en chapa negra" },
+    { src: "/frentes/imgFrenteChapa9.jpeg", alt: "Frente de parrilla en chapa negra" },
+    { src: "/frentes/imgFrenteChapa10.jpeg", alt: "Frente de parrilla en chapa negra" },
+    { src: "/frentes/imgFrenteChapa11.jpeg", alt: "Frente de parrilla en chapa negra" },
+    { src: "/frentes/imgFrenteChapa12.jpeg", alt: "Frente de parrilla en chapa negra" },
+    { src: "/frentes/imgFrenteChapa13.jpeg", alt: "Frente de parrilla en chapa negra" },
+    { src: "/frentes/imgFrenteChapa14.jpeg", alt: "Frente de parrilla en chapa negra" },
+    { src: "/frentes/imgFrenteChapa15.jpeg", alt: "Frente de parrilla en chapa negra" },
+    { src: "/frentes/imgFrenteChapa16.jpg", alt: "Frente de parrilla en chapa negra" },
+    { src: "/frentes/imgFrenteChapa17.jpg", alt: "Frente de parrilla en chapa negra" },
+    { src: "/frentes/imgFrenteChapa18.jpg", alt: "Frente de parrilla en chapa negra" },
+    { src: "/frentes/imgFrenteChapa19.jpg", alt: "Frente de parrilla en chapa negra" },
+    { src: "/frentes/imgFrenteInox1.jpeg", alt: "Frente de parrilla en acero inoxidable" },
+    { src: "/frentes/imgFrenteInox2.jpg", alt: "Frente de parrilla en acero inoxidable" },
+    { src: "/frentes/imgFrenteInox3.jpeg", alt: "Frente de parrilla en acero inoxidable" },
+    { src: "/frentes/imgFrenteInox4.jpg", alt: "Frente de parrilla en acero inoxidable" },
+    { src: "/frentes/imgFrenteInox5.jpeg", alt: "Frente de parrilla en acero inoxidable" },
+    { src: "/frentes/imgFrenteInox6.jpeg", alt: "Frente de parrilla en acero inoxidable" },
+    { src: "/frentes/imgFrenteAntes.jpg", alt: "Antes de aplicar el frente de parrilla" },
+    { src: "/frentes/imgFrenteAntes1.jpeg", alt: "Antes de aplicar el frente de parrilla" },
+    { src: "/frentes/imgFrenteDespues1.jpeg", alt: "Después de aplicar el frente de parrilla" },
+  ],
+  ambientes: [
+    { src: "/ambientes/imgBajoMesada.jpg", alt: "Ambiente con bajo mesada" },
+    { src: "/ambientes/imgChimeneaFrente.jpg", alt: "Frente de chimenea" },
+    { src: "/ambientes/imgFrenteAntes.jpg", alt: "Ambiente antes" },
+    { src: "/ambientes/imgFrenteAntes1.jpeg", alt: "Ambiente antes" },
+    { src: "/ambientes/imgFrenteDespues1.jpeg", alt: "Ambiente después" },
+  ],
+  otros: [
+    { src: "/otros/imgFogonero.jpg", alt: "Fogonero" },
+    { src: "/otros/imgPTrasladable.jpg", alt: "Parrilla trasladable" },
+    { src: "/otros/imgPTrasladable2.jpg", alt: "Parrilla trasladable" },
+  ],
+};
+
+const tabs: { id: TabType; label: string }[] = [
+  { id: "frentes", label: "Frentes de Parrilla" },
+  { id: "ambientes", label: "Ambientes" },
+  { id: "otros", label: "Otros" },
 ];
 
 export function Gallery() {
+  const [activeTab, setActiveTab] = useState<TabType>("frentes");
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [showAll, setShowAll] = useState(false);
+
+  const currentImages = galleryImages[activeTab];
+  const MAX_INITIAL_IMAGES = 12;
+  const displayedImages = showAll ? currentImages : currentImages.slice(0, MAX_INITIAL_IMAGES);
+  const hasMoreImages = currentImages.length > MAX_INITIAL_IMAGES;
+
+  // Reset selectedIndex y showAll cuando cambia el tab
+  useEffect(() => {
+    setSelectedIndex(null);
+    setShowAll(false);
+  }, [activeTab]);
 
   // Prevenir scroll del body cuando el modal está abierto
   useEffect(() => {
+    if (typeof document === "undefined") return;
     if (selectedIndex !== null) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
     }
     return () => {
-      document.body.style.overflow = "unset";
+      if (typeof document !== "undefined") {
+        document.body.style.overflow = "unset";
+      }
     };
   }, [selectedIndex]);
 
+  const selectedImage = selectedIndex !== null ? currentImages[selectedIndex] : null;
+
+  const goToPrevious = () => {
+    if (selectedIndex === null) return;
+    setSelectedIndex(selectedIndex === 0 ? currentImages.length - 1 : selectedIndex - 1);
+  };
+
+  const goToNext = () => {
+    if (selectedIndex === null) return;
+    setSelectedIndex(selectedIndex === currentImages.length - 1 ? 0 : selectedIndex + 1);
+  };
+
   // Navegación con teclado (ESC para cerrar, flechas para navegar)
   useEffect(() => {
+    if (typeof window === "undefined") return;
     const handleKeyDown = (e: KeyboardEvent) => {
       if (selectedIndex === null) return;
 
@@ -56,33 +111,15 @@ export function Gallery() {
         setSelectedIndex(null);
       } else if (e.key === "ArrowLeft") {
         e.preventDefault();
-        setSelectedIndex((prev) => {
-          if (prev === null) return null;
-          return prev === 0 ? images.length - 1 : prev - 1;
-        });
+        goToPrevious();
       } else if (e.key === "ArrowRight") {
         e.preventDefault();
-        setSelectedIndex((prev) => {
-          if (prev === null) return null;
-          return prev === images.length - 1 ? 0 : prev + 1;
-        });
+        goToNext();
       }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [selectedIndex]);
-
-  const selectedImage = selectedIndex !== null ? images[selectedIndex] : null;
-
-  const goToPrevious = () => {
-    if (selectedIndex === null) return;
-    setSelectedIndex(selectedIndex === 0 ? images.length - 1 : selectedIndex - 1);
-  };
-
-  const goToNext = () => {
-    if (selectedIndex === null) return;
-    setSelectedIndex(selectedIndex === images.length - 1 ? 0 : selectedIndex + 1);
-  };
+  }, [selectedIndex, currentImages.length]);
 
   return (
     <SectionWrapper id="trabajos" theme="light">
@@ -95,37 +132,97 @@ export function Gallery() {
           className="text-center mb-16"
         >
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-gray-900 mb-6">
-            Trabajos y frentes de parrilla
+            Galería de trabajos
           </h2>
           <p className="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto">
             Algunas fotos de trabajos reales. Para ver más trabajos, podés ver la galería completa en nuestro <a href="https://www.instagram.com/agdivisiongastronomia/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">Instagram</a>
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-          {images.map((image, index) => (
-            <motion.figure
-              key={image.src}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.2, delay: index * 0.03, ease: "easeOut" }}
-              className="group relative aspect-[4/3] overflow-hidden rounded-2xl bg-gray-100 cursor-pointer"
-              onClick={() => setSelectedIndex(index)}
+        {/* Tabs */}
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`px-6 py-3 rounded-full text-base font-semibold transition-all ${
+                activeTab === tab.id
+                  ? "bg-gray-900 text-white"
+                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+              }`}
             >
-              <Image
-                src={image.src}
-                alt={image.alt}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <figcaption className="absolute bottom-0 left-0 right-0 p-4 text-white text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                {image.alt}
-              </figcaption>
-            </motion.figure>
+              {tab.label}
+            </button>
           ))}
         </div>
+
+        {/* Grid de imágenes */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={`${activeTab}-${showAll}`}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6"
+          >
+            {displayedImages.map((image, index) => (
+              <motion.figure
+                key={`${activeTab}-${image.src}`}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.2, delay: index * 0.03, ease: "easeOut" }}
+                className="group relative aspect-[4/3] overflow-hidden rounded-2xl bg-gray-100 cursor-pointer"
+                onClick={() => setSelectedIndex(index)}
+              >
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <figcaption className="absolute bottom-0 left-0 right-0 p-4 text-white text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  {image.alt}
+                </figcaption>
+              </motion.figure>
+            ))}
+            
+            {/* Botón "Ver más" si hay más imágenes y no se están mostrando todas */}
+            {!showAll && hasMoreImages && displayedImages.length === MAX_INITIAL_IMAGES && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.2, delay: MAX_INITIAL_IMAGES * 0.03, ease: "easeOut" }}
+                className="group relative aspect-[4/3] overflow-hidden rounded-2xl bg-gray-200 cursor-pointer hover:bg-gray-300 transition-colors duration-300 flex items-center justify-center"
+                onClick={() => setShowAll(true)}
+              >
+                <div className="text-center p-8">
+                  <svg
+                    width="48"
+                    height="48"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="mx-auto mb-4 text-gray-600 group-hover:text-gray-900 transition-colors"
+                  >
+                    <path
+                      d="M12 5v14m7-7H5"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  <p className="text-xl font-semibold text-gray-900 mb-2">Ver más</p>
+                  <p className="text-sm text-gray-600">
+                    {currentImages.length - MAX_INITIAL_IMAGES} imágenes más
+                  </p>
+                </div>
+              </motion.div>
+            )}
+          </motion.div>
+        </AnimatePresence>
       </div>
 
       {/* Modal/Lightbox */}
@@ -163,7 +260,7 @@ export function Gallery() {
             </button>
 
             {/* Botón anterior */}
-            {images.length > 1 && (
+            {currentImages.length > 1 && (
               <button
                 onClick={(e) => {
                   e.stopPropagation();
@@ -191,7 +288,7 @@ export function Gallery() {
             )}
 
             {/* Botón siguiente */}
-            {images.length > 1 && (
+            {currentImages.length > 1 && (
               <button
                 onClick={(e) => {
                   e.stopPropagation();
@@ -249,9 +346,9 @@ export function Gallery() {
                 {/* Información debajo de la imagen */}
                 <div className="mt-4 text-center max-w-4xl">
                   <p className="text-white text-lg mb-1">{selectedImage.alt}</p>
-                  {images.length > 1 && (
+                  {currentImages.length > 1 && (
                     <p className="text-white/60 text-sm">
-                      {selectedIndex + 1} / {images.length}
+                      {selectedIndex + 1} / {currentImages.length}
                     </p>
                   )}
                 </div>

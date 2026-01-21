@@ -16,7 +16,7 @@ export function Hero() {
             <div className="flex flex-1 flex-col justify-center gap-5 px-5 py-7 sm:px-7 lg:px-8">
               <div className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-slate-50 px-3 py-1 text-[11px] font-medium text-slate-700">
                 <span className="inline-block h-1.5 w-1.5 rounded-full bg-whatsapp" />
-                Metalúrgica especializada en parrillas y frentes a medida
+                Metalúrgica especializada en la fabricación y colocación de frentes de parrilla
               </div>
               <div className="space-y-4">
                 <h1 className="text-balance text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.5rem]">
@@ -65,8 +65,8 @@ export function Hero() {
             {/* Columna de imagen con degrade lateral */}
             <div className="relative min-h-[220px] flex-1 overflow-hidden lg:min-h-[320px]">
               <div className="absolute inset-0 bg-gradient-to-l from-white via-white/30 to-transparent" />
-              <Image
-                src="/galeria/IMG_6992.jpeg"
+                      <Image
+                        src="/galeria/imgFrenteInox1.jpeg"
                 alt="Frente de parrilla instalado por AG División Gastronomía"
                 fill
                 priority

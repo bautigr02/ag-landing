@@ -39,7 +39,7 @@ export function SectionWrapper({
           if (typeof document !== "undefined") {
             document.documentElement.setAttribute("data-section-theme", theme);
           }
-        }
+    }
       },
       {
         threshold: 0.1, // Reducido de 0.2 a 0.1 para mejor detección en mobile

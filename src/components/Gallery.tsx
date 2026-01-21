@@ -2,33 +2,41 @@ import Image from "next/image";
 
 const images = [
   {
-    src: "/galeria/IMG_6992.jpeg",
-    alt: "Frente de parrilla instalado con terminaciones prolijas",
+    src: "/galeria/imgFrenteChapa1.jpeg",
+    alt: "Frente de chapa 1",
   },
   {
-    src: "/galeria/IMG_6993.jpeg",
-    alt: "Detalle de frente y parrilla en uso",
+    src: "/galeria/imgFrenteChapa2.jpeg",
+    alt: "Frente de chapa 2",
   },
   {
-    src: "/galeria/IMG_6994.jpeg",
-    alt: "Frente metálico visto de frente",
+    src: "/galeria/imgFrenteChapa3.jpg",
+    alt: "Frente de chapa 3",
   },
   {
-    src: "/galeria/IMG_6995.jpeg",
-    alt: "Detalle de interior de parrilla y guías",
+    src: "/galeria/imgFrenteChapa4.jpg",
+    alt: "Frente de chapa 4",
   },
   {
-    src: "/galeria/imgFrenteInox.jpeg",
-    alt: "Frente de parrilla en acero inoxidable instalado",
+    src: "/galeria/imgFrenteChapa5.jpeg",
+    alt: "Frente de chapa 5",
   },
   {
-    src: "/galeria/imgFrenteChapaNegra.jpeg",
-    alt: "Frente de parrilla en chapa negra",
+    src: "/galeria/imgFrenteInox1.jpeg",
+    alt: "Frente de inox 1",
   },
   {
-    src: "/galeria/imgDetalleFrenteInox.jpeg",
-    alt: "Detalle de frente de parrilla en inox y terminación prolija",
+    src: "/galeria/imgFrenteInox2.jpg",
+    alt: "Frente de inox 2",
   },
+  {
+    src: "/galeria/imgFrenteInox3.jpeg",
+    alt: "Frente de inox 3",
+  },
+  {
+    src: "/galeria/imgFrenteInox4.jpg",
+    alt: "Frente de inox 4"
+  }
 ];
 
 export function Gallery() {

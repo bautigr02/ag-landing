@@ -8,50 +8,35 @@ import { useState, useEffect } from "react";
 const services = [
   {
     id: "frentes",
-    title: "Frentes de parrilla",
+    title: "Fabricacion de Frentes",
     description:
       "Diseño y fabricación a medida que renueva tu espacio.",
     features: [
       "Medidas según obra o espacio existente",
-      "En acero inoxidable o chapa resistente al calor y al uso intensivo",
       "Terminaciones y pinturas a elección",
-      "Parrillas completas o solo frente",
-      "Sumale bajoparrilla, horno pizzero, bacha y más"
+      "En acero inoxidable o chapa resistente al calor y al uso intensivo",
+      "Parrillas en chapa enlozada o acero inoxidable",
+      "Materiales de calidad y resistentes al calor y al uso intensivo",
     ],
     image: {
-      src: "/galeria/imgFrenteInox.jpeg",
+      src: "/frentes/imgFrenteInox1.jpeg",
       alt: "Frente de parrilla en acero inoxidable instalado",
     },
   },
   {
     id: "parrillas",
-    title: "Parrillas completas",
+    title: "Instalación Completa",
     description:
-      "Parrillas listas para usar, con sistema de elevación y parrillas reforzadas",
+      "Instalación completa de frente y parrilla, con sistema de elevación y parrillas reforzadas",
     features: [
-      "Parrilla en V o redonda",
-      "Elevación a manija o rueda",
-      "Canaletas y grasera",
-      "Acero inoxidable o chapa galvanizada",
+      "Guías de elevación de puerta seguro y funcional",
+      "Sistema de elevación de parrilla",
+      "Cajones y guías de puerta reforzados",
+      "Bajoparrilla, espacio para horno, bacha y más"
     ],
     image: {
-      src: "/galeria/IMG_6993.jpeg",
+      src: "/frentes/imgFrenteChapa12.jpeg",
       alt: "Parrilla completa con sistema de elevación",
-    },
-  },
-  {
-    id: "parrigas",
-    title: "Parrillas trasladables",
-    description:
-      "Parrigas para gas o leña, ideales para balcones, interiores o exteriores",
-    features: [
-      "Medidas adaptadas a distintos espacios y necesidades",
-      "Agregale tapa, puertas, mesadas de madera o ladrillo, desengresador, guía de gas y más accesorios.",
-      "De Acero Inoxidable o Chapa resistente al calor y al uso intensivo",
-    ],
-    image: {
-      src: "/galeria/IMG_6994.jpeg",
-      alt: "Parriga robusta para uso gastronómico",
     },
   },
   {
@@ -60,12 +45,13 @@ const services = [
     description:
       "Proyectos a medida para casas, locales o espacios específicos",
     features: [
-      "Trabajamos estufas a leña propias y linea Lepen",
-      "Fabricamos sistemas de canaletas",
+      "Chimeneas, horno pizzero, mesadas y bachas para completar el espacio",
+      "Estufas a leña propias y linea Lepen",
+      "Fogoneros, Estacas y Parrillas trasladables",
       "Diseños según plano, instalaciones existentes o ideas",
     ],
     image: {
-      src: "/galeria/IMG_6995.jpeg",
+      src: "/ambientes/imgChimeneaFrente.jpg",
       alt: "Trabajo especial a medida",
     },
   },
@@ -126,7 +112,7 @@ export function Services() {
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
           {services.map((service, index) => (
             <motion.div
               key={service.id}
@@ -139,11 +125,11 @@ export function Services() {
                 ease: [0.22, 1, 0.36, 1], // Cubic bezier más suave
                 type: "tween"
               }}
-              className="flex flex-col p-8 rounded-3xl border border-gray-200 bg-white hover:shadow-xl group"
+              className="flex flex-col p-8 rounded-3xl border border-gray-200 bg-white hover:shadow-xl group h-full"
             >
               {/* Imagen clickeable */}
               <div
-                className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-gray-100 mb-6 cursor-pointer"
+                className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-gray-100 mb-6 cursor-pointer flex-shrink-0"
                 onClick={() => setSelectedImage(service.image)}
               >
                 <Image
@@ -175,11 +161,11 @@ export function Services() {
                 </div>
               </div>
 
-              <h3 className="text-2xl font-semibold text-gray-900 mb-3">
+              <h3 className="text-2xl font-semibold text-gray-900 mb-3 flex-shrink-0">
                 {service.title}
               </h3>
-              <p className="text-gray-600 mb-6 flex-grow">{service.description}</p>
-              <ul className="space-y-2 mb-6">
+              <p className="text-gray-600 mb-6 flex-shrink-0">{service.description}</p>
+              <ul className="space-y-2 mb-6 flex-grow">
                 {service.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-2 text-gray-700">
                     <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-gray-900 flex-shrink-0" />
@@ -191,7 +177,7 @@ export function Services() {
                 href={whatsappHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-full border-2 border-gray-900 px-6 py-3 text-sm font-semibold text-gray-900 transition-all hover:bg-gray-900 hover:text-white active:scale-95"
+                className="inline-flex items-center justify-center rounded-full border-2 border-gray-900 px-6 py-3 text-sm font-semibold text-gray-900 transition-all hover:bg-gray-900 hover:text-white active:scale-95 mt-auto flex-shrink-0"
               >
                 Consultar
               </a>

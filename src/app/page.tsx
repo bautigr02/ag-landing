@@ -1,5 +1,6 @@
 import { StickyNavbar } from "@/components/StickyNavbar";
 import { Hero } from "@/sections/Hero";
+import { Featured } from "@/sections/Featured";
 import { Services } from "@/sections/Services";
 import { Gallery } from "@/sections/Gallery";
 import { FAQ } from "@/sections/FAQ";
@@ -13,6 +14,7 @@ export default function Home() {
       <StickyNavbar />
       <main>
         <Hero />
+        <Featured />
         <Gallery />
         <Services />
         <FAQ />
