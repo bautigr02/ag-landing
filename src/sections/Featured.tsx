@@ -29,31 +29,7 @@ const featuredImages = [
   {
     src: "/destacados/imgFrenteChapa10.jpeg",
     alt: "Frente de parrilla en chapa - detalle destacado",
-  },
-  {
-    src: "/destacados/imgFrenteChapa12.jpeg",
-    alt: "Frente de parrilla en chapa - trabajo destacado",
-  },
-  {
-    src: "/destacados/imgFrenteChapa16.jpg",
-    alt: "Frente de parrilla en chapa destacado",
-  },
-  {
-    src: "/destacados/imgFrenteChapa17.jpg",
-    alt: "Frente de parrilla en chapa - trabajo destacado",
-  },
-  {
-    src: "/destacados/imgFrenteChapa18.jpg",
-    alt: "Frente de parrilla en chapa - detalle destacado",
-  },
-  {
-    src: "/destacados/imgFrenteAntes1.jpeg",
-    alt: "Antes y después - transformación destacada",
-  },
-  {
-    src: "/destacados/imgFrenteDespues1.jpeg",
-    alt: "Resultado final - trabajo destacado",
-  },
+  }
 ];
 
 export function Featured() {
@@ -239,7 +215,7 @@ export function Featured() {
 
   return (
     <SectionWrapper id="destacados" theme="light">
-      <div className="mx-auto max-w-7xl px-6 md:px-6 py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-0 md:px-6 py-24 md:py-32">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -247,18 +223,18 @@ export function Featured() {
           transition={{ duration: 0.2, ease: "easeOut" }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-gray-900 mb-6">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-gray-900 mb-6 px-6 md:px-0">
             Trabajos destacados
           </h2>
-          <p className="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto px-6 md:px-0">
             Algunos de nuestros mejores trabajos en frentes de parrilla a medida
           </p>
         </motion.div>
 
         {/* Carrusel */}
-        <div className="relative w-full -mx-6 md:-mx-0">
+        <div className="relative w-full md:rounded-2xl md:overflow-hidden md:mx-0">
           <div 
-            className="relative overflow-hidden"
+            className="relative overflow-hidden md:rounded-2xl"
             onTouchStart={onTouchStart}
             onTouchMove={onTouchMove}
             onTouchEnd={onTouchEnd}
@@ -279,7 +255,11 @@ export function Featured() {
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.3, delay: idx * 0.1 }}
                     className={`relative h-[400px] md:h-[600px] overflow-hidden cursor-pointer group ${
-                      !isMobile && idx === 0 ? 'border-r border-white/20' : ''
+                      !isMobile && idx === 0 ? 'md:border-r-2 md:border-gray-300' : ''
+                    } ${
+                      !isMobile && idx === 0 ? 'md:rounded-l-2xl' : ''
+                    } ${
+                      !isMobile && idx === visibleIndices.length - 1 ? 'md:rounded-r-2xl' : ''
                     }`}
                     onClick={() => setSelectedImageIndex(imgIndex)}
                   >
