@@ -217,7 +217,7 @@ export function Featured() {
         </motion.div>
 
         {/* Carrusel */}
-        <div className="relative w-full -mx-6 md:-mx-0">
+        <div className="relative w-full">
           <div 
             className="relative overflow-hidden"
             onTouchStart={onTouchStart}
@@ -231,7 +231,7 @@ export function Featured() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -50 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="grid grid-cols-1 md:grid-cols-2 gap-0"
+                className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3 justify-items-center"
               >
                 {visibleIndices.map((imgIndex, idx) => (
                   <motion.div
